@@ -26,7 +26,7 @@ function SignUp() {
   const [emailError, setEmailError] = useState(false);
   const [ServerError, setServerError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { isPending, mutate } = useMutation({
     mutationKey: ["user-signUp"],
     mutationFn: async () => {
@@ -36,13 +36,13 @@ function SignUp() {
         email,
         username,
         password,
-      }); 
+      });
       return response.data;
     },
-        onSuccess:(data)=>{
-       setSuccess(data.message);
-       navigate('/login')
-        },
+    onSuccess: (data) => {
+      setSuccess(data.message);
+      navigate("/login");
+    },
     onError: (error) => {
       if (error) {
         if (axios.isAxiosError(error)) {
