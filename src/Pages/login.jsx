@@ -25,6 +25,9 @@ function Login() {
         const ServerError = error.response.data.message
         setServerError(ServerError)
       }
+      else {
+        setServerError("Mmmmh something went wrong")
+      }
     }
   })
   function handleLogin(){
