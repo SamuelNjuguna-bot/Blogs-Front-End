@@ -12,7 +12,7 @@ import { use, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios, { isAxiosError } from "axios";
 import validator from "validator";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -26,7 +26,7 @@ function SignUp() {
   const [emailError, setEmailError] = useState(false);
   const [ServerError, setServerError] = useState("");
   const [success, setSuccess] = useState("");
-
+  const navigate = useNavigate()
   const { isPending, mutate } = useMutation({
     mutationKey: ["user-signUp"],
     mutationFn: async () => {
@@ -36,12 +36,13 @@ function SignUp() {
         email,
         username,
         password,
-      });
+      }); 
       return response.data;
     },
-    //     onSuccess:()=>{
-    // //    <Navigate to={"/login"}></Navigate>
-    //     },
+        onSuccess:(data)=>{
+       setSuccess(data.message);
+       navigate('/login')
+        },
     onError: (error) => {
       if (error) {
         if (axios.isAxiosError(error)) {

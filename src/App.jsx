@@ -1,11 +1,17 @@
-import SignUp from "./Pages/signUp";
-import { Stack, Box, Typography } from "@mui/material";
+import SignUp from "./Pages/signUp"
+import Login from "./Pages/login"
+import Homepage from "./Pages/homepage"
+import { Routes, Route } from "react-router-dom"
 function App() {
   return (
     <>
-      <SignUp />
+    <Routes>
+     <Route  path="/" element={<Homepage/>}>HomePage</Route> 
+     <Route  path ="/login"element={<Login/>}>Login</Route>
+     <Route path="/signup" element={<SignUp/>}>SignUp</Route>
+    </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
