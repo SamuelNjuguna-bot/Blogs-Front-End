@@ -7,7 +7,6 @@ function Protected({ children }) {
   const user = user_Data((state) => {
     return state.user;
   });
-  console.log(user);
   useEffect(() => {
     if (!user) {
       navigate("/login");

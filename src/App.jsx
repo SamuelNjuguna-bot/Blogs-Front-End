@@ -3,6 +3,7 @@ import Login from "./Pages/login";
 import Homepage from "./Pages/homepage";
 import BlogListing from "./Pages/BlogListing";
 import { Routes, Route } from "react-router-dom";
+import CreateBlog from "./Pages/CreateBlog/create_blog";
 import Protected from "./Pages/ProtectedRoutes/Protected";
 function App() {
   return (
@@ -11,15 +12,11 @@ function App() {
         <Route path="/" element={<Homepage />}>
           HomePage
         </Route>
-        <Route
-          path="/bloglisting"
-          element={
-            <Protected>
-              <BlogListing />
-            </Protected>
-          }
-        >
+        <Route path="/bloglisting" element={<BlogListing />}>
           Blog Listing
+        </Route>
+        <Route path="/createblog" element={<CreateBlog />}>
+          Create Blog
         </Route>
         <Route path="/login" element={<Login />}>
           Login

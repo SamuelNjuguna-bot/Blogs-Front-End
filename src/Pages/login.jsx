@@ -33,7 +33,6 @@ function Login() {
       return response.data;
     },
     onSuccess: (data) => {
-      console.log(data);
       setSuccess("Logged in successfuly");
       userData(data);
       navigate("/bloglisting");

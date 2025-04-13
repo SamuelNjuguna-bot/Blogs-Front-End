@@ -1,0 +1,26 @@
+.createblog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 1000px;
+  gap: 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+.main {
+  border: 2px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-area {
+  width: 100%;
+  min-height: 400px;
+  font-size: 1.5rem;
+}
+form {
+  width: inherit;
+  margin-top: 1rem;
+}
