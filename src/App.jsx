@@ -4,6 +4,7 @@ import Homepage from "./Pages/homepage";
 import BlogListing from "./Pages/BlogListing";
 import { Routes, Route } from "react-router-dom";
 import CreateBlog from "./Pages/CreateBlog/create_blog";
+import ArticlePage from "./Pages/Articles";
 import Protected from "./Pages/ProtectedRoutes/Protected";
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}>
           SignUp
         </Route>
+        <Route path="/articles/:id" element={<ArticlePage />}></Route>
       </Routes>
     </>
   );

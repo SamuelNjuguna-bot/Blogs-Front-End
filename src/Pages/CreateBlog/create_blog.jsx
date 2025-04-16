@@ -3,12 +3,14 @@ import { Typography, Button, TextField, Alert } from "@mui/material";
 import { use, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function CreateBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const { isPending, mutate } = useMutation({
     mutationKey: ["create_blog"],
@@ -21,7 +23,9 @@ function CreateBlog() {
       return response.data;
     },
     onSuccess: (data) => {
+      const userId = data.blogId;
       setSuccess(data.message);
+      navigate(`/articles/${userId}`);
     },
 
     onError: (error) => {
@@ -58,7 +62,7 @@ function CreateBlog() {
         />
         <TextField
           fullWidth
-          label="Blog Title"
+          label="Blog Description"
           placeholder="Enter your title here"
           onChange={(e) => {
             setDescription(e.target.value);
