@@ -21,7 +21,9 @@ function BlogListing() {
       >
         Create a Blog
       </Button>
-      <h1>Welcome to Our Blog Listing</h1>
+      <Typography display="flex" justifyContent="center" alignItems="center">
+        Our Top Featured Blogs{" "}
+      </Typography>
       <Card sx={{ display: "flex", flexDirection: "column", width: "1000px" }}>
         <Grid container mainGrid display="flex">
           <Grid detailsGrid>
