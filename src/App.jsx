@@ -1,11 +1,12 @@
-import SignUp from "./Pages/signUp";
-import Login from "./Pages/login";
+import SignUp from "./Pages/Authentication/signUp";
+import Login from "./Pages/Authentication/login";
 import Homepage from "./Pages/homepage";
 import BlogListing from "./Pages/BlogListing";
 import { Routes, Route } from "react-router-dom";
 import CreateBlog from "./Pages/CreateBlog/create_blog";
 import ArticlePage from "./Pages/Articles";
 import Protected from "./Pages/ProtectedRoutes/Protected";
+import MyBlogs from "./Pages/myBlogsPage";
 function App() {
   return (
     <>
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/signup" element={<SignUp />}>
           SignUp
+        </Route>
+        <Route path="/myblogs/:id" element={<MyBlogs />}>
+          My_Blogs
         </Route>
         <Route path="/articles/:id" element={<ArticlePage />}></Route>
       </Routes>

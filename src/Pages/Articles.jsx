@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 function ArticlePage() {
   const params = useParams();
+  const navigate = useNavigate();
   const { id } = params;
   const { data } = useQuery({
     queryKey: ["fetch_key"],
@@ -17,6 +19,14 @@ function ArticlePage() {
 
   return (
     <>
+      <Button
+        onClick={(e) => {
+          e.preventDefault;
+          navigate(`/bloglisting/${id}`);
+        }}
+      >
+        Blog Listing
+      </Button>
       <Typography
         display="flex"
         alignItems="center"

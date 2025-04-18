@@ -6,7 +6,7 @@ import {
   TextField,
   Alert,
 } from "@mui/material";
-import user_Data from "../Store/userStore";
+import user_Data from "../../Store/userStore";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +35,7 @@ function Login() {
     onSuccess: (data) => {
       setSuccess("Logged in successfuly");
       userData(data);
-      navigate("/bloglisting");
+      navigate(`/bloglisting`);
     },
     onError: (error) => {
       if (axios.isAxiosError(error)) {
