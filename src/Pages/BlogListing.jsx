@@ -6,36 +6,34 @@ import {
   CardMedia,
   Grid,
   Stack,
-  ButtonGroup,
 } from "@mui/material";
-import blogImage from "../assets/Blogs-Images/Blogs-image-example.jpg";
+
 import { useNavigate } from "react-router-dom";
 import author from "../assets/Blogs-Images/author1.jpg";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 import axios from "axios";
-import user_Data from "../Store/userStore";
 function BlogListing() {
-  const user = user_Data((state) => {
-    return state.user;
-  });
-  console.log(user);
-
+  const params = useParams();
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const id = params.id;
   const { data } = useQuery({
     queryKey: ["blog_Listing"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:3000/bloglisting`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `http://localhost:3000/bloglisting/${id}`,
+        {
+          withCredentials: true,
+        },
+      );
       const { data } = response.data;
-      console.log(data);
       return data;
     },
   });
+
+  if (data) {
+    var myBlogsId = data[1];
+  }
 
   return (
     <Stack display="flex" justifyContent="center" alignItems="center">
@@ -48,8 +46,8 @@ function BlogListing() {
           Create a Blog
         </Button>
         <Button
-          onClick={(e) => {
-            e.preventDefault;
+          onClick={() => {
+            navigate(`/myblogs/${myBlogsId}`);
           }}
         >
           My Blogs

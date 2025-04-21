@@ -6,7 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import CreateBlog from "./Pages/CreateBlog/create_blog";
 import ArticlePage from "./Pages/Articles";
 import Protected from "./Pages/ProtectedRoutes/Protected";
-import MyBlogs from "./Pages/myBlogsPage";
+import MyBlogs from "./Pages/MyBlogs/myBlogsPage";
+import Update from "./Pages/MyBlogs/handleUpdate";
 function App() {
   return (
     <>
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Homepage />}>
           HomePage
         </Route>
-        <Route path="/bloglisting" element={<BlogListing />}>
+        <Route path="/bloglisting/:id" element={<BlogListing />}>
           Blog Listing
         </Route>
         <Route path="/createblog" element={<CreateBlog />}>
@@ -30,6 +31,7 @@ function App() {
           My_Blogs
         </Route>
         <Route path="/articles/:id" element={<ArticlePage />}></Route>
+        <Route path="/update/:id" element={<Update />}></Route>
       </Routes>
     </>
   );

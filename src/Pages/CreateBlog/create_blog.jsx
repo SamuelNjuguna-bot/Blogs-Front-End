@@ -12,7 +12,6 @@ function CreateBlog() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [image, setImage] = useState("");
-  const [saveImage, setSaveImage] = useState("");
   const [formError, setFormError] = useState("");
   const navigate = useNavigate();
 
