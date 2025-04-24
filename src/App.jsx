@@ -40,7 +40,7 @@ function App() {
         <Route path="/update/:id" element={<Update />}></Route>
         <Route path="/update/:id" element={<Update />}></Route>
         <Route path="/delete/:id" element={<Delete />}></Route>
-        <Route path="/profileUpdate/:id" element={<ProfileUpdate/>}></Route>
+        <Route path="/profileUpdate/:id" element={<ProfileUpdate />}></Route>
       </Routes>
     </>
   );
