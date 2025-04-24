@@ -14,18 +14,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 function BlogListing() {
-  const params = useParams();
   const navigate = useNavigate();
-  const id = params.id;
   const { data } = useQuery({
     queryKey: ["blog_Listing"],
     queryFn: async () => {
-      const response = await axios.get(
-        `http://localhost:3000/bloglisting/${id}`,
-        {
-          withCredentials: true,
-        },
-      );
+      const response = await axios.get(`http://localhost:3000/bloglisting`, {
+        withCredentials: true,
+      });
       const { data } = response.data;
       return data;
     },

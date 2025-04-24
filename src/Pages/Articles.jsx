@@ -22,7 +22,7 @@ function ArticlePage() {
       <Button
         onClick={(e) => {
           e.preventDefault;
-          navigate(`/bloglisting/${id}`);
+          navigate(`/bloglisting`);
         }}
       >
         Blog Listing

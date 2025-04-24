@@ -6,16 +6,26 @@ import {
   Stack,
   Button,
 } from "@mui/material";
-
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-import Update from "./handleUpdate";
 function MyBlogs() {
   const navigate = useNavigate();
   const id = useParams().id;
+
+  const { mutate } = useMutation({
+    mutationKey: ["deleting blog"],
+    mutationFn: async () => {
+      const response = await axios.patch(
+        `http://localhost:3000/delete/${id}`,
+        { id },
+        { withCredentials: true },
+      );
+      console.log(response);
+    },
+    onSuccess: () => {},
+  });
   const { data } = useQuery({
     queryKey: ["blog_Listing"],
     queryFn: async () => {
@@ -27,7 +37,9 @@ function MyBlogs() {
     },
   });
 
-  function handleDelete() {}
+  function handleDelete() {
+    mutate();
+  }
   return (
     <Stack display="flex" justifyContent="center" alignItems="center">
       <Typography variant="h3" component="h1" mb="20px">
@@ -91,8 +103,10 @@ function MyBlogs() {
 
                     <Button
                       variant="contained"
-                      sx={{ bgcolor: "red" }}
                       onClick={handleDelete}
+                      sx={{
+                        bgcolor: "red",
+                      }}
                     >
                       Delete
                     </Button>
